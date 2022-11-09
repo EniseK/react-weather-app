@@ -3,8 +3,9 @@ import "./Weather.css";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
 
-export default function Weather() {
+export default function Weather(props) {
 	const [weatherData, setWeatherData] = useState({ ready: false });
+	const [city, setCity] = useState(props.defaultCity);
 	function handleResponse(response) {
 		console.log(response.data);
 
@@ -20,11 +21,27 @@ export default function Weather() {
 				"http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
 		});
 	}
+	function handleSubmit(event) {
+		event.preventDefault();
+		search();
+	}
+
+	function search() {
+		const apiKey = "baac7b1cad0e7487be6feoe4t18f6423";
+
+		let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+		axios.get(apiUrl).then(handleResponse);
+	}
+
+	function handleCityChange(event) {
+		setCity(event.target.value);
+	}
 
 	if (weatherData.ready) {
 		return (
 			<div className="Weather">
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div className="row">
 						<div className="col-9">
 							<input
@@ -32,6 +49,7 @@ export default function Weather() {
 								placeholder="Type city name..."
 								className="form-control"
 								autoFocus="on"
+								onChange={handleCityChange}
 							/>
 						</div>
 						<div className="col-3">
@@ -43,7 +61,8 @@ export default function Weather() {
 						</div>
 					</div>
 				</form>
-				<h1>Hannover</h1>
+
+				<h1>{weatherData.city}</h1>
 				<ul>
 					<li>
 						<FormattedDate date={weatherData.date} />
@@ -77,12 +96,7 @@ export default function Weather() {
 			</div>
 		);
 	} else {
-		const apiKey = "baac7b1cad0e7487be6feoe4t18f6423";
-		let city = "Hannover";
-		let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-
-		axios.get(apiUrl).then(handleResponse);
-
+		search();
 		return "Loading...";
 	}
 }
