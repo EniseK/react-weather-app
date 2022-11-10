@@ -38,7 +38,7 @@
 	margin-right: 10px;
 }
 
-.Weather .temp {
+.Weather .temperature {
 	font-weight: bold;
 	color: rgb(33, 33, 33);
 	font-size: 64px;
@@ -54,4 +54,8 @@
 	top: -34px;
 
 	line-height: 1;
+}
+
+.WeatherTemperature a {
+	text-decoration: none;
 }

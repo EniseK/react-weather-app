@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
 import FormattedDate from "./FormattedDate";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function Weather(props) {
 	const [weatherData, setWeatherData] = useState({ ready: false });
@@ -17,8 +18,7 @@ export default function Weather(props) {
 			city: response.data.city,
 			humidity: response.data.temperature.humidity,
 			description: response.data.condition.description,
-			iconUrl:
-				"http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
+			iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
 		});
 	}
 	function handleSubmit(event) {
@@ -72,17 +72,14 @@ export default function Weather(props) {
 
 				<div className="row mt-3">
 					<div className="col-6">
-						<span className="clearfix">
+						<span className="clear-fix">
 							<img
 								src={weatherData.iconUrl}
 								alt="Clear"
 								className="float-left"
 							></img>
 							<span className="float-left">
-								<span className="temp">
-									{Math.round(weatherData.temperature)}
-								</span>
-								<span className="unit">°C</span>
+								<WeatherTemperature celcius={weatherData.temperature} />
 							</span>
 						</span>
 					</div>
