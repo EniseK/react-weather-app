@@ -11,7 +11,7 @@ export default function App() {
 				<a
 					href="https://classy-empanada-a7c461.netlify.app/"
 					target="_blank"
-					rel="noreferrer"
+					rel="noopener noreferrer"
 				>
 					Enise Kizilaslan
 				</a>{" "}
@@ -19,7 +19,7 @@ export default function App() {
 				<a
 					href="https://github.com/EniseK/react-weather-app"
 					target="_blank"
-					rel="noreferrer"
+					rel="noopener noreferrer"
 				>
 					open sourced on GitHub.
 				</a>
