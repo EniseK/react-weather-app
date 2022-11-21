@@ -22,6 +22,7 @@ export default function Weather(props) {
 			iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
 		});
 	}
+
 	function handleSubmit(event) {
 		event.preventDefault();
 		search();
@@ -62,7 +63,6 @@ export default function Weather(props) {
 						</div>
 					</div>
 				</form>
-
 				<h1>{weatherData.city}</h1>
 				<ul>
 					<li>
@@ -70,7 +70,6 @@ export default function Weather(props) {
 					</li>
 					<li className="text-capitalize">{weatherData.description}</li>
 				</ul>
-
 				<div className="row mt-3">
 					<div className="col-6">
 						<span className="clear-fix">
