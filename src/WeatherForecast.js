@@ -11,23 +11,16 @@ export default function WeatherForecast(props) {
 	}
 
 	if (loaded) {
-		function day() {
-			let date = new Date(forecastData[0].time * 1000);
-			let day = date.getDay();
-			let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-			return days[day];
-		}
-
 		return (
 			<div className="WeatherForecast">
 				<div className="row">
 					<div className="col">
-						<div className="WeatherForecast-day">{day()}</div>{" "}
+						<div className="WeatherForecast-day">"Thu"</div>{" "}
 						<div>
-							<img src={""} alt="Forecast">
-								src=
-								{`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastData[0].condition.icon}.png`}
-							</img>
+							<img
+								src={`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastData[0].condition.icon}.png`}
+								alt="Forecast"
+							></img>
 						</div>{" "}
 						<div className="WeatherForecast-temperatures">
 							<span className="WeatherForecast-temp-max">

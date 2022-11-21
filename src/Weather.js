@@ -89,12 +89,11 @@ export default function Weather(props) {
 							<li>Wind: {weatherData.wind}km/h</li>
 						</ul>
 					</div>
+					<WeatherForecast city={weatherData.city} />
 				</div>
-				<WeatherForecast city={weatherData.city} />
 			</div>
 		);
 	} else {
 		search();
-		return "Loading...";
 	}
 }
