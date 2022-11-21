@@ -14,14 +14,24 @@ export default function App() {
 					rel="noopener noreferrer"
 				>
 					Enise Kizilaslan
-				</a>{" "}
-				and is {""}
+				</a>
+				, is {""}
 				<a
 					href="https://github.com/EniseK/react-weather-app"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					open sourced on GitHub.
+					{" "}
+					open sourced on GitHub{" "}
+				</a>{" "}
+				and hosted on{" "}
+				<a
+					href="https://elegant-cendol-9cdb9d.netlify.app/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					{" "}
+					Netlify.
 				</a>
 			</footer>
 		</div>
