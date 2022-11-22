@@ -1,29 +1,30 @@
 import React, { useState } from "react";
 import "./WeatherForecast.css";
 import axios from "axios";
-import FormattedDate from "./FormattedDate";
 
 export default function WeatherForecast(props) {
 	const [loaded, setLoaded] = useState(false);
 	const [forecastData, setForecastData] = useState({ loaded: false });
-	const [city, setCity] = useState(null);
+
 	function handleResponse(response) {
 		setForecastData(response.data.daily);
 		setLoaded(true);
 	}
 
+	function load() {
+		let apiKey = "baac7b1cad0e7487be6feoe4t18f6423";
+
+		let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.city}&key=${apiKey}&units=metric`;
+
+		axios.get(apiUrl).then(handleResponse);
+	}
+
 	if (loaded) {
-		function day() {
-			let date = new Date(forecastData[0].time * 1000);
-			let day = date.getDay();
-			let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-			return days[day];
-		}
 		return (
 			<div className="WeatherForecast">
 				<div className="row">
 					<div className="col">
-						<div className="WeatherForecast-day">{day()}</div>
+						<div className="WeatherForecast-day">"Thu"</div>
 						<img
 							src={`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastData[0].condition.icon}.png`}
 							alt="Forecast"
