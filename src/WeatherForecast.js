@@ -16,14 +16,6 @@ export default function WeatherForecast(props) {
 		setLoaded(true);
 	}
 
-	function load() {
-		let apiKey = "baac7b1cad0e7487be6feoe4t18f6423";
-
-		let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.city}&key=${apiKey}&units=metric`;
-
-		axios.get(apiUrl).then(handleResponse);
-	}
-
 	if (loaded) {
 		console.log(forecastData);
 		return (
